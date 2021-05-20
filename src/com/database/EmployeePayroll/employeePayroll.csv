@@ -1,0 +1,6 @@
+id,Employee_Name,PhoneNo,Address,Department,Gender,Salary,Deduction,TaxablePay,IncomeTax,NetPay,Start_Date
+1,Amar,9028626816,Pen,Engineering,Male,90000,2000,1000,200,46800,2020-07-17
+2,Mayur,9999999999,"Navi Mumbai",HR,Male,40000,1800,1000,200,37000,2020-08-14
+3,Nishad,99123456789,Pen,Manager,Male,60000,2800,1000,200,56000,2019-11-14
+4,Monika,9087654321,Mumbai,IT,Female,45000,1800,1000,200,42000,2019-09-12
+5,Sonu,9898989898,Banglore,Marketing,Female,55000,2200,1000,200,51600,2019-06-27
