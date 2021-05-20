@@ -12,7 +12,10 @@ public class AddressBook {
 		//String query ="INSERT INTO `addressbook_service`.`addressbook` (`FirstName`, `LastName`, `Address`, `City`, `State`, `Zip`, `PhoneNo.`, `Email_ID`) VALUES ('Mayur', 'Pawar', 'Pooja Complex', 'Pen', 'Maharashtra', '402107', '9999999999', 'mayur02@gmail.com')";
 		
 		// query to edit the person by using name
-		String query = "update addressbook_service.addressbook set city = 'Mumbai' where FirstName = 'Amar'";
+		//String query = "update addressbook_service.addressbook set city = 'Mumbai' where FirstName = 'Amar'";
+		
+		//query to delete contact by contact name
+		String query = "delete from addressbook where FirstName = 'Mayur'";
 		//loading and registering driver
 		Class.forName("com.mysql.jdbc.Driver");
 		//establishing connect with url username and password
