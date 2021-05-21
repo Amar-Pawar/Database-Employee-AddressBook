@@ -27,3 +27,8 @@ INSERT INTO addressbook(FirstName, LastName, Address, City, State, Zip, PhoneNo,
   #showing contacts by state name
  select * from addressbook where State = 'Maharashtra';
  
+ #getting the count in addressbook by  city name
+ select count(*) from addressbook where city = 'Pen';
+ 
+  #getting the count in addressbook by  state name
+ select count(*) from addressbook where State = 'Maharashtra';
