@@ -32,3 +32,6 @@ INSERT INTO addressbook(FirstName, LastName, Address, City, State, Zip, PhoneNo,
  
   #getting the count in addressbook by  state name
  select count(*) from addressbook where State = 'Maharashtra';
+ 
+ #showing addressbook sorted alphabeticaly by name
+ select * from addressbook where city = 'Pen' order by FirstName;
