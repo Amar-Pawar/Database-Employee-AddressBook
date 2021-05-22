@@ -1,3 +1,5 @@
-FirstName,LastName,Address,City,State,Zip,PhoneNo,Email_ID
-Mayur,Pawar,"Pooja Complex",Pen,Maharashtra,402107,9999999999,mayur02@gmail.com
-Nishad,Vairagi,"Chawdi naka",Pen,Maharashtra,402107,9898989898,nishad@gmail.com
+FirstName,LastName,Address,City,State,Zip,PhoneNo,Email_ID,AddressBookName,Type
+Mayur,Pawar,"Pooja Complex",Pen,Maharashtra,402107,9999999999,mayur02@gmail.com,"My Contacts",Family
+Nishad,Vairagi,"Chawdi naka",Pen,Maharashtra,402107,9898989898,nishad@gmail.com,"Freinds Contact",Friend
+Amar,Pawar,"Pooja Complex",Mumbai,Maharashtra,402107,9028626816,pawaramar.pawar@gmail.com,"My Contacts",Family
+Sagar,Pawar,Kharghar,Mumbai,Maharashtra,4011002,9876543212,sagar@gmail.com,"Friends Contact",Friend

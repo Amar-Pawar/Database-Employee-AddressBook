@@ -35,3 +35,25 @@ INSERT INTO addressbook(FirstName, LastName, Address, City, State, Zip, PhoneNo,
  
  #showing addressbook sorted alphabeticaly by name
  select * from addressbook where city = 'Pen' order by FirstName;
+ 
+show full tables;
+
+#altering the table and aading coloumns
+alter table addressbook
+ADD column AddressBookName varchar(45) not null after Email_ID;
+
+#altering the table and aading coloumns
+alter table addressbook
+ADD column Type varchar(45) not null after AddressBookName;
+
+#updating the culoumn by FirstName
+update addressbook set AddressBookName = 'My Contacts' where FirstName = 'Amar' or 'Mayur';
+
+#updating the culoumn by FirstName
+update addressbook set AddressBookName = 'Friends Contact' where FirstName = 'Nishad' or 'Sagaar';
+
+#updating the culoumn by FirstName
+update addressbook set Type = 'Family' where FirstName = 'Amar' or 'Mayur';
+
+#updating the culoumn by FirstName
+update addressbook set Type = 'Friend' where FirstName = 'Nishad' or 'Sagar';
