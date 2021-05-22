@@ -60,3 +60,16 @@ update addressbook set Type = 'Friend' where FirstName = 'Nishad' or 'Sagar';
 
 #count the number of persons based on type
 select count(*) from addressbook where type = 'Family';
+
+#UC-13
+ #showing contacts by city name
+ select * from addressbook where City = 'Pen';
+
+#getting the count in addressbook by  city name
+ select count(*) from addressbook where city = 'Pen';
+ 
+  #showing addressbook sorted alphabeticaly by name
+ select * from addressbook where city = 'Pen' order by FirstName;
+ 
+ #count the number of persons based on type
+select count(*) from addressbook where type = 'Family';
