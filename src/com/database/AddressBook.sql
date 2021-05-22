@@ -57,3 +57,6 @@ update addressbook set Type = 'Family' where FirstName = 'Amar' or 'Mayur';
 
 #updating the culoumn by FirstName
 update addressbook set Type = 'Friend' where FirstName = 'Nishad' or 'Sagar';
+
+#count the number of persons based on type
+select count(*) from addressbook where type = 'Family';
