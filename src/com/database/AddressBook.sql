@@ -71,5 +71,43 @@ select count(*) from addressbook where type = 'Family';
   #showing addressbook sorted alphabeticaly by name
  select * from addressbook where city = 'Pen' order by FirstName;
  
- #count the number of persons based on type
+ #count the number of persons based on typeemployee_payrollemployee_payroll
 select count(*) from addressbook where type = 'Family';
+
+#changing the table name
+ALTER TABLE `addressbook_service`.`addressbook` 
+RENAME TO  `addressbook_service`.`contact` ;
+
+#creating third table for many to many relation
+#making foreign key fot corrosponding primary key for establishing relation
+CREATE TABLE `addressbook_service`.`contact_addressbook` (
+  `Email_ID` CHAR(50) NOT NULL,
+  `Type` VARCHAR(45) NOT NULL,
+  INDEX `Email_ID_idx` (`Email_ID` ASC) VISIBLE,
+  INDEX `Type_idx` (`Type` ASC) VISIBLE,
+  CONSTRAINT `Email_ID`
+    FOREIGN KEY (`Email_ID`)
+    REFERENCES `addressbook_service`.`contact` (`Email_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Type`
+    FOREIGN KEY (`Type`)
+    REFERENCES `addressbook_service`.`addressbook_type` (`Type`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+    
+    #Adding same contact to both friends and family and bridge table takes care of redundancy in data
+    insert into contact_addressbook values ('pawaramar.pawar@gmail.com', 'Family');
+    insert into contact_addressbook values ('pawaramar.pawar@gmail.com', 'Friends');
+    
+	insert into contact_addressbook values ('nishad@gmail.com', 'Friends');
+	insert into contact_addressbook values ('mayur02@gmail.com', 'Family');
+	insert into contact_addressbook values ('sagar@gmail.com', 'Family');
+	insert into contact_addressbook values ('swaraj@gmail.com', 'Friends');
+    
+    #query to get data after establishing many to many relation with bridge by join 
+    select contact.FirstName, contact.Email_ID, contact.PhoneNo, addressbook_type.Type as Type, addressbook_type.AddressBookName
+    as AddressBookName from contact join contact_addressbook on
+    (contact.Email_ID=contact_addressbook.Email_ID) join addressbook_type on 
+    (addressbook_type.Type = contact_addressbook.Type);
+    
