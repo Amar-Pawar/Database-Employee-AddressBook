@@ -66,3 +66,54 @@ describe employee_payroll;
 
 #updating the culoumn by employee name
 update payroll_service.employee_payroll set Gender = 'Male' where employee_Name = 'Amar';
+
+#updating the table department for department name add department id
+UPDATE `payroll_service`.`department` SET `Department_Name` = 'HR' WHERE (`Department_ID` = '11');
+UPDATE `payroll_service`.`department` SET `Department_Name` = 'Marketing' WHERE (`Department_ID` = '22');
+UPDATE `payroll_service`.`department` SET `Department_Name` = 'Engineer' WHERE (`Department_ID` = '33');
+UPDATE `payroll_service`.`department` SET `Department_Name` = 'Developer' WHERE (`Department_ID` = '44');
+UPDATE `payroll_service`.`department` SET `Department_Name` = 'Supervisor' WHERE (`Department_ID` = '50');
+
+
+#creating bridge table for many to many relationship between department and employee_payroll
+#and setting corresponding primary keys as foreign key in brige table 
+CREATE TABLE `payroll_service`.`employee_department` (
+  `Employee_id` INT NOT NULL,
+  `Department_ID` INT NOT NULL,
+  INDEX `Employee_id_idx` (`Employee_id` ASC) VISIBLE,
+  INDEX `Department_ID_idx` (`Department_ID` ASC) VISIBLE,
+  CONSTRAINT `Employee_id`
+    FOREIGN KEY (`Employee_id`)
+    REFERENCES `payroll_service`.`employee_payroll` (`Employee_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Department_ID`
+    FOREIGN KEY (`Department_ID`)
+    REFERENCES `payroll_service`.`department` (`Department_ID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+    
+    #inserting data into bridge table to establish many to many relation
+    #adding one employee to different departments and reduce redundancy
+    insert into employee_department values (1,33);
+    insert into employee_department values (1,44);
+    
+    insert into employee_department values (2,11);
+    insert into employee_department values (3,22);
+    insert into employee_department values (4,50);
+    insert into employee_department values (5,33);
+    insert into employee_department values (6,44);
+    
+    #query to get data by bridge table we created for showing many to many realtion and reduce redundancy in data and get desired data
+    select employee_payroll.Employee_id, employee_payroll.Name, employee_payroll.PhoneNo, employee_payroll.salary, department.Department_ID as Department_ID, department.Department_Name as Department_Name
+    from employee_payroll join employee_department on (employee_payroll.Employee_id = employee_department.Employee_id)
+    join department on (department.Department_ID = employee_department.Department_ID);
+    
+    
+    #ensuring all UC worling fine after new structure
+    select count(*) from employee_department where Department_ID = 44;
+    
+    select * from employee_payroll;
+    select Salary from employee_payroll where Name = 'Amar';
+    SELECT MAX(Salary) FROM employee_payroll
+    WHERE Gender = 'Female' GROUP BY Gender;
